@@ -78,7 +78,7 @@ dependencies = [
 
 [[package]]
 name = "niccalc"
-version = "0.9.4"
+version = "0.9.5"
 dependencies = [
  "fltk",
 ]
