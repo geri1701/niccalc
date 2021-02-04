@@ -2,7 +2,6 @@
 mod calculate_nic;
 pub use crate::calculate_nic::calculate_nic;
 use fltk::{image, app::*, group::*, input::*, output::*, text::*, window::*};
-use std::fs;
 fn main() {
     let img = image::PngImage::load("niccalc.png").unwrap();
     let app = App::default().with_scheme(AppScheme::Gleam);
@@ -31,7 +30,7 @@ fn main() {
     let mut info_display = TextDisplay::new(5, 30, 435, 265, "");
     info_tab.add(&info_display);
     let help_and_license =
-        fs::read_to_string("README.md").unwrap() + "\n" + &fs::read_to_string("LICENSE.txt").unwrap();
+        include_str!("README.md").to_owned() + "\n" + &include_str!("LICENSE.txt");
     wind.set_icon(Some(img));
     let buffer = TextBuffer::default();
     info_display.set_buffer(Some(buffer));
