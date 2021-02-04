@@ -31,7 +31,7 @@ fn main() {
     let mut info_display = TextDisplay::new(5, 30, 435, 265, "");
     info_tab.add(&info_display);
     let help_and_license =
-        fs::read_to_string("info.txt").unwrap() + "\n" + &fs::read_to_string("LICENSE").unwrap();
+        fs::read_to_string("README.md").unwrap() + "\n" + &fs::read_to_string("LICENSE").unwrap();
     wind.set_icon(Some(img));
     let buffer = TextBuffer::default();
     info_display.set_buffer(Some(buffer));
