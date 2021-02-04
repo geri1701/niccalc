@@ -1,4 +1,4 @@
-#Niccalc
+# Niccalc
 
 Niccalc is a tool that helps to determine the necessary amount of nicotine for an e-cigarette liquid,
 all you have to do is enter the corresponding values in the input fields.
