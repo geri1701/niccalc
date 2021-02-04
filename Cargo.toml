@@ -1,0 +1,15 @@
+[package]
+name = "niccalc"
+version = "0.9.0"
+authors = ["Gerhard Schwanzer <geri@sdf.org>"]
+edition = "2018"
+license-file = "LICENSE.txt"
+description = "A tool to calculate nicotine amount needed for an e-cigarette liquid"
+homepage = "https://github.com/geri1701/niccalc"
+repository = "https://github.com/geri1701/niccalc"
+readme = "README.md"
+keywords = ["gui", "convert"]
+cactegories = "mathematics"
+[dependencies]
+fltk = "^0.13"
+
