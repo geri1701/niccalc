@@ -3,7 +3,7 @@ mod calculate_nic;
 pub use crate::calculate_nic::calculate_nic;
 use fltk::{image, app::*, group::*, input::*, output::*, text::*, window::*};
 fn main() {
-    let img = image::PngImage::load("niccalc.png").unwrap();
+    //let img = image::PngImage::load("niccalc.png").unwrap();
     let app = App::default().with_scheme(AppScheme::Gleam);
     let mut wind = Window::new(0, 0, 445, 300, "Niccalc");
     let mut tabs = Tabs::new(0, 0, 445, 300, "");
@@ -31,7 +31,7 @@ fn main() {
     info_tab.add(&info_display);
     let help_and_license =
         include_str!("README.md").to_owned() + "\n" + &include_str!("LICENSE.txt");
-    wind.set_icon(Some(img));
+    //wind.set_icon(Some(img));
     let buffer = TextBuffer::default();
     info_display.set_buffer(Some(buffer));
     info_display.wrap_mode(WrapMode::AtColumn, 55);
