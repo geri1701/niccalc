@@ -8,3 +8,23 @@ This software is written in Rust using the Rust bindings for the FLTK Graphical 
 
 ![Screenshot](screenshots/niccalc_scrsh.png)
 
+## Installation
+
+### Linux and other
+
+First install cargo.
+
+Now, compile the niccalc-crate:
+
+```
+cargo install niccalc
+```
+### Windows
+
+For all Windows users who are not able to compile something themselves or who are already too lazy to do so, I have prepared a binary:
+
+Download:
+[win-executable](niccalc.exe)
+
+
+
