@@ -24,7 +24,7 @@ cargo install niccalc
 For all Windows users who are not able to compile something themselves or who are already too lazy to do so, I have prepared a binary:
 
 Download:
-[win-executable](niccalc.exe)
+[win-executable](https://github.com/geri1701/niccalc/blob/master/niccalc.exe)
 
 
 
