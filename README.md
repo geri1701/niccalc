@@ -6,7 +6,7 @@ The amount of flavor is optional.
 
 This software is written in Rust using the Rust bindings for the FLTK Graphical User Interface library [fltk-rs](https://crates.io/crates/fltk).
 
-![Screenshot](https://github.com/geri1701/niccalc/blob/master/screenshots/niccalc_scrsh.png)
+[![A screenshot](https://github.com/geri1701/niccalc/blob/master/screenshots/niccalc_scrsh.png)](https://github.com/geri1701/niccalc/blob/master/screenshots/niccalc_scrsh.png)
 
 ## Installation
 
@@ -24,7 +24,7 @@ cargo install niccalc
 For all Windows users who are not able to compile something themselves or who are already too lazy to do so, I have prepared a binary:
 
 Download:
-[win-executable](https://github.com/geri1701/niccalc/blob/master/niccalc.exe)
+[win-executable](https://github.com/geri1701/niccalc/blob/master/binary/niccalc.exe)
 
 
 

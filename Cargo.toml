@@ -1,6 +1,6 @@
 [package]
 name = "niccalc"
-version = "0.9.7"
+version = "0.9.8"
 authors = ["Gerhard Schwanzer <geri@sdf.org>"]
 edition = "2018"
 license = "MIT"
@@ -9,7 +9,7 @@ homepage = "https://github.com/geri1701/niccalc"
 repository = "https://github.com/geri1701/niccalc"
 readme = "README.md"
 keywords = ["gui", "convert"]
-cactegories = "mathematics"
+cactegories = ["gui"]
 [dependencies]
 fltk = "^0.13"
 
