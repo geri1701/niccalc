@@ -9,7 +9,7 @@ homepage = "https://github.com/geri1701/niccalc"
 repository = "https://github.com/geri1701/niccalc"
 readme = "README.md"
 keywords = ["gui", "convert"]
-cactegories = ["gui"]
+categories = ["gui"]
 [dependencies]
 fltk = "^0.13"
 
