@@ -1,6 +1,6 @@
 [package]
 name = "niccalc"
-version = "0.9.8"
+version = "0.9.9"
 authors = ["Gerhard Schwanzer <geri@sdf.org>"]
 edition = "2018"
 license = "MIT"
