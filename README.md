@@ -6,7 +6,7 @@ The amount of flavor is optional.
 
 This software is written in Rust using the Rust bindings for the FLTK Graphical User Interface library [fltk-rs](https://crates.io/crates/fltk).
 
-[![A screenshot](https://github.com/geri1701/niccalc/blob/master/screenshots/niccalc_scrsh.png)](https://raw.githubusercontent.com/geri1701/niccalc/master/screenshots/niccalc_scrsh.png)
+![A screenshot](https://raw.githubusercontent.com/geri1701/niccalc/master/screenshots/niccalc_scrsh.png)
 
 ## Installation
 
