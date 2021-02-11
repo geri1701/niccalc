@@ -1,4 +1,5 @@
 # Niccalc
+![Crates.io](https://img.shields.io/crates/v/niccalc.svg)
 ![Rust](https://github.com/geri1701/niccalc/workflows/Rust/badge.svg)
 
 Niccalc is a tool that helps to determine the necessary amount of nicotine for an e-cigarette liquid,
