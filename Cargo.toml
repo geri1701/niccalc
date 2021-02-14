@@ -1,6 +1,6 @@
 [package]
 name = "niccalc"
-version = "0.9.10"
+version = "0.9.11"
 authors = ["Gerhard Schwanzer <geri@sdf.org>"]
 edition = "2018"
 license = "MIT"
@@ -12,4 +12,4 @@ keywords = ["gui", "convert"]
 categories = ["gui"]
 [dependencies]
 fltk = "^0.13"
-
+comfy-table = "2.1.0"

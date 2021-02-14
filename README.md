@@ -6,7 +6,8 @@ Niccalc is a tool that helps to determine the necessary amount of nicotine for a
 all you have to do is enter the corresponding values in the input fields.
 The amount of flavor is optional.
 
-This software is written in Rust using the Rust bindings for the FLTK Graphical User Interface library [fltk-rs](https://crates.io/crates/fltk).
+This software is written in Rust using the Rust bindings for the FLTK Graphical User Interface library [fltk-rs](https://crates.io/crates/fltk)
+and [comfy-table](https://crates.io/crates/comfy-table).
 
 ![A screenshot](https://raw.githubusercontent.com/geri1701/niccalc/master/screenshots/niccalc_scrsh.png)
 
@@ -27,6 +28,3 @@ For all Windows users who are not able to compile something themselves or who ar
 
 Download:
 [win-executable](https://github.com/geri1701/niccalc/blob/master/binary/niccalc.exe)
-
-
-
