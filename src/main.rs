@@ -25,11 +25,11 @@ fn main() {
     calc_tab.add(&output_result);
     let mut chart = fltk::misc::Chart::new(5, 150, 245, 195, "");
     calc_tab.add(&chart);
-    let mut info_tab = Group::new(0, 30, 500, 310, "Info");
+    let mut info_tab = Group::new(0, 30, 500, 210, "Info");
     info_tab.end();
     info_tab.hide();
     tabs.add(&info_tab);
-    let mut info_display = TextDisplay::new(5, 30, 490, 330, "");
+    let mut info_display = TextDisplay::new(5, 30, 500, 300, "");
     info_tab.add(&info_display);
     let help_and_license =
         include_str!("README.md").to_owned() + "\n" + include_str!("LICENSE.txt");
