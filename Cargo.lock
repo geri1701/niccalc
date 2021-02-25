@@ -179,7 +179,7 @@ dependencies = [
 
 [[package]]
 name = "niccalc"
-version = "0.9.12"
+version = "0.9.15"
 dependencies = [
  "comfy-table",
  "fltk",

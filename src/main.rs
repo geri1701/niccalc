@@ -1,7 +1,7 @@
 #![windows_subsystem = "windows"]
 mod calculate_nic;
-pub use crate::calculate_nic::calculate_nic;
-use comfy_table::Table;
+pub use crate::calculate_nic::*;
+use comfy_table::{Table, presets::UTF8_FULL, modifiers::UTF8_ROUND_CORNERS };
 use fltk::{app::*, group::*, image, input::*, output::*, text::*, window::*};
 fn main() {
     let icon_data = include_bytes!("niccalc.png");
@@ -101,6 +101,8 @@ fn main() {
 
                     let mut table = Table::new();
                     table
+                        .load_preset(UTF8_FULL)
+                        .apply_modifier(UTF8_ROUND_CORNERS)
                         .set_header(vec!["Ingredient", "Amount(ml)"])
                         .add_row(vec!["Base", &base.to_string()])
                         .add_row(vec!["Nicotine Base", &shots.to_string()])
@@ -113,6 +115,8 @@ fn main() {
                     let base = inp_val_tv - (shots + inp_val_a);
                     let mut table = Table::new();
                     table
+                        .load_preset(UTF8_FULL)
+                        .apply_modifier(UTF8_ROUND_CORNERS)
                         .set_header(vec!["Ingredient", "Amount(ml)"])
                         .add_row(vec!["Base", &base.to_string()])
                         .add_row(vec!["Flavour", &inp_val_a.to_string()])
