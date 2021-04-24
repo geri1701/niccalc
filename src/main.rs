@@ -13,7 +13,7 @@ fn main() {
     let mut calc_tab = Group::new(0, 27, 510, 310, "Calculator");
     calc_tab.end();
     tabs.add(&calc_tab);
-    let mut input_shotstr = FloatInput::new(255, 45, 250, 25, "Nicotine base strenght (mg/ml):");
+    let mut input_shotstr = FloatInput::new(255, 45, 250, 25, "Nicotine base strength (mg/ml):");
     calc_tab.add(&input_shotstr);
     let mut input_targstr = FloatInput::new(255, 70, 250, 25, "Nicotine strength wanted (mg/ml):");
     calc_tab.add(&input_targstr);
@@ -82,9 +82,9 @@ fn main() {
             output_result.set_value("");
             if inp_val_s < 0.0 || inp_val_s >= 1000.0 {
                 output_result
-                    .set_value("Nicotine base strenght must be between 0.0 und 999.9mg/ml");
+                    .set_value("Nicotine base strength must be between 0.0 und 999.9mg/ml");
             } else if inp_val_ts < 0.0 || inp_val_ts > inp_val_s {
-                output_result.set_value("Nicotine strenght wanted must be between  0 and value of nicotine base strenght");
+                output_result.set_value("Nicotine strength wanted must be between  0 and value of nicotine base strength");
             } else if inp_val_tv < 0.0 || inp_val_tv >= 100000.00 {
                 output_result.set_value("The amount wanted must be between 0 and 100000!");
             } else if inp_val_a < 0.0
