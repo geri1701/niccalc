@@ -13,7 +13,7 @@ categories = ["gui"]
 
 [dependencies]
 fltk = { version = "1", features = ["fltk-bundled"] }
-comfy-table = "2"
+comfy-table = "7"
 cascade = "1"
 glib = "0.20"
 
