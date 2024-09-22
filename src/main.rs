@@ -68,7 +68,7 @@ fn main() -> Result<(), FltkError> {
                             ..set_trigger(CallbackTrigger::Changed);
                             ..set_type(InputType::Float);
                             ..set_value(&state.borrow().shotstr().to_string());
-                            ..set_callback(glib::clone!(@strong state => move |input| {
+                            ..set_callback(glib::clone!(#[strong] state, move |input| {
                                 if let Ok(value) = input.value().parse::<f64>() {
                                     if (0f64..1000f64).contains(&value) {
                                         input.set_color(Color::Background2);
@@ -86,7 +86,7 @@ fn main() -> Result<(), FltkError> {
                             ..set_trigger(CallbackTrigger::Changed);
                             ..set_type(InputType::Float);
                             ..set_value(&state.borrow().targstr().to_string());
-                            ..set_callback(glib::clone!(@strong state => move |input| {
+                            ..set_callback(glib::clone!(#[strong] state, move |input| {
                                 if let Ok(value) = input.value().parse::<f64>() {
                                     if (0f64..=state.borrow().shotstr()).contains(&value) {
                                         input.set_color(Color::Background2);
@@ -104,7 +104,7 @@ fn main() -> Result<(), FltkError> {
                             ..set_trigger(CallbackTrigger::Changed);
                             ..set_type(InputType::Float);
                             ..set_value(&state.borrow().targvol().to_string());
-                            ..set_callback(glib::clone!(@strong state => move |input| {
+                            ..set_callback(glib::clone!(#[strong] state, move |input| {
                                 if let Ok(value) = input.value().parse::<f64>() {
                                     if (0f64..=100000f64).contains(&value) {
                                         input.set_color(Color::Background2);
@@ -122,7 +122,7 @@ fn main() -> Result<(), FltkError> {
                             ..set_trigger(CallbackTrigger::Changed);
                             ..set_type(InputType::Float);
                             ..set_value(&state.borrow().aromavol().to_string());
-                            ..set_callback(glib::clone!(@strong state => move |input| {
+                            ..set_callback(glib::clone!(#[strong] state, move |input| {
                                 if let Ok(value) = input.value().parse::<f64>() {
                                     if (0f64..=state.borrow().limit()).contains(&value) {
                                         input.set_color(Color::Background2);
@@ -142,7 +142,7 @@ fn main() -> Result<(), FltkError> {
                     ..set_pad(PAD);
                     ..add(&Frame::default());
                     ..end();
-                    ..handle(glib::clone!(@strong state => move |flex, event| {
+                    ..handle(glib::clone!(#[strong] state, move |flex, event| {
                         if event == UPDATE {
                             flex.clear();
                             flex.begin();
