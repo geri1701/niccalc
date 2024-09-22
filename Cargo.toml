@@ -15,7 +15,7 @@ categories = ["gui"]
 fltk = { version = "1", features = ["fltk-bundled"] }
 comfy-table = "2"
 cascade = "1"
-glib = "0.18"
+glib = "0.20"
 
 [profile.release]
 strip = true
