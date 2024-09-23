@@ -22,9 +22,3 @@ Now, compile the niccalc-crate:
 ```
 cargo install niccalc
 ```
-### Windows
-
-For all Windows users who are not able to compile something themselves or who are already too lazy to do so, I have prepared a binary:
-
-Download:
-[win-executable](assets/niccalc.exe)
