@@ -9,7 +9,7 @@ The amount of flavor is optional.
 This software is written in Rust using the Rust bindings for the FLTK Graphical User Interface library [fltk-rs](https://crates.io/crates/fltk)
 and [comfy-table](https://crates.io/crates/comfy-table).
 
-![A screenshot](assets/niccalc_scrsh.png)
+![A screenshot](assets/niccalc01.png)
 
 ## Installation
 
