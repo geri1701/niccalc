@@ -53,6 +53,7 @@ fn main() -> Result<(), FltkError> {
             Wizard::default_fill();
             ..add(&cascade!(
                 Flex::default_fill().column().with_label("Calculator");
+                ..set_frame(FrameType::FlatBox);
                 ..set_margin(PAD);
                 ..set_pad(PAD);
                 ..fixed(&cascade!(
@@ -248,6 +249,7 @@ fn add_menu(wizard: &mut Wizard, event: Event) -> bool {
 fn page_settings() -> Flex {
     cascade!(
         Flex::default_fill().with_label("Settings");
+        ..set_frame(FrameType::FlatBox);
         ..set_margin(PAD);
         ..set_pad(PAD);
         ..add(&Frame::default());
@@ -269,22 +271,22 @@ fn page_settings() -> Flex {
                         ..set_value(0);
                         ..set_callback(move |choice| {
                             let color = [
-                                [ //LIGHT
+                                [
                                     0xF6F5F4, //set_background_color
-                                    0xFFFFFF, //set_background2_color
-                                    0x404040, //set_foreground_color
-                                    0xb58900, //set_inactive_color
+                                    0xFCFCFC, //set_background2_color
+                                    0x323232, //set_foreground_color
+                                    0x3584E4, //set_selection_color
                                 ],
-                                [ //DARK
-                                    0x404040, //set_background_color
-                                    0x3B3B3B, //set_background2_color
-                                    0xF6F5F4, //set_foreground_color
-                                    0x268bd2, //set_inactive_color
+                                [
+                                    0x353535, //set_background_color
+                                    0x303030, //set_background2_color
+                                    0xD6D6D6, //set_foreground_color
+                                    0x15539E, //set_selection_color
                                 ],
                             ][choice.value() as usize];
-                            app::set_scheme(match choice.value() != 0 {
-                                true => app::Scheme::Base,
-                                false => app::Scheme::Oxy,
+                            app::set_scheme(match choice.value() {
+                                0 => app::Scheme::Oxy,
+                                _ => app::Scheme::Gtk,
                             });
                             let (r, g, b) = Color::from_hex(color[0]).to_rgb();
                             app::set_background_color(r, g, b);
@@ -292,15 +294,13 @@ fn page_settings() -> Flex {
                             app::set_background2_color(r, g, b);
                             let (r, g, b) = Color::from_hex(color[2]).to_rgb();
                             app::set_foreground_color(r, g, b);
-                            let (r, g, b) = Color::from_hex(color[2]).to_rgb();
-                            app::set_selection_color(r, g, b);
                             let (r, g, b) = Color::from_hex(color[3]).to_rgb();
-                            app::set_inactive_color(r, g, b);
+                            app::set_selection_color(r, g, b);
+                            app::set_color(Color::Blue, r, g, b);
                             for (color, hex) in [
                                 (Color::Yellow, 0xb58900),
                                 (Color::Red, 0xdc322f),
                                 (Color::Magenta, 0xd33682),
-                                (Color::Blue, 0x268bd2),
                                 (Color::Cyan, 0x2aa198),
                                 (Color::Green, 0x859900),
                             ] {
