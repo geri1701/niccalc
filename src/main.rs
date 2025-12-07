@@ -173,7 +173,7 @@ fn main() -> Result<(), FltkError> {
                             flex.fixed(&{
                                 let mut tbl = Browser::default();
                                 tbl.set_column_widths(&[115, 155]);
-                                tbl.add("Ingredient\tAmount(ml)");
+                                tbl.add("@uIngredient\t@uAmount(ml)");
                                 for (x, y) in state.borrow().output() {
                                     tbl.add(&format!("{x}\t{y}"));
                                 };
