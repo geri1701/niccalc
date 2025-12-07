@@ -10,6 +10,7 @@ This software is written in Rust using the Rust bindings for the FLTK Graphical 
 and [comfy-table](https://crates.io/crates/comfy-table).
 
 ![A screenshot](assets/niccalc01.png)
+![A screenshot](assets/niccalc02.png)
 
 ## Installation
 

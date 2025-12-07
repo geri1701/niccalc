@@ -12,10 +12,7 @@ keywords = ["gui", "convert"]
 categories = ["gui"]
 
 [dependencies]
-fltk = { version = "1", features = ["fltk-bundled"] }
-comfy-table = "7"
-cascade = "1"
-glib = "0.20"
+fltk = { version = "1" }
 
 [profile.release]
 strip = true
