@@ -36,7 +36,31 @@ impl Update {
 fn main() -> Result<(), FltkError> {
     let state = Rc::new(RefCell::new(models::Model::default()));
     const UPDATE: Event = Update::NicCal.event();
-    let app = app::App::default();
+    let app = app::App::default().load_system_fonts();
+    app::set_scheme(app::Scheme::Base);
+    app::set_frame_type2(FrameType::UpBox, FrameType::ThinUpBox);
+    app::set_frame_type2(FrameType::DownBox, FrameType::ThinDownBox);
+    app::set_background_color(238, 232, 213);
+    app::set_background2_color(253, 246, 227);
+    app::set_foreground_color(7, 54, 66);
+    app::set_selection_color(203, 75, 22);
+    app::set_inactive_color(181, 137, 0);
+    Tooltip::set_color(Color::Background2);
+    Tooltip::set_text_color(Color::Foreground);
+    for (color, (r, g, b)) in [
+        (Color::Red, (220, 50, 47)),
+        (Color::Magenta, (211, 54, 130)),
+        (Color::Blue, (38, 139, 210)),
+        (Color::Cyan, (42, 161, 152)),
+        (Color::Green, (133, 153, 0)),
+    ] {
+        app::set_color(color, r, g, b);
+    }
+    app::set_visible_focus(false);
+    app::set_font(match cfg!(target_os = "windows") {
+        true => Font::by_name("BCascadia Mono"),
+        false => Font::CourierBold,
+    });
     let mut wnd = Window::default().with_size(640, 360).center_screen();
     wnd.size_range(640, 360, 0, 0);
     wnd.set_label("Niccalc");
@@ -331,7 +355,6 @@ fn page_settings() -> Flex {
                                 app::set_visible_focus(false);
                                 app::redraw();
                             });
-                            wgt.do_callback();
                             wgt
                         },
                         HEIGHT,
@@ -344,7 +367,6 @@ fn page_settings() -> Flex {
                             wgt.set_callback(move |choice| {
                                 app::set_font(Font::by_index(choice.value() as usize));
                             });
-                            wgt.do_callback();
                             wgt
                         },
                         HEIGHT,
@@ -360,7 +382,6 @@ fn page_settings() -> Flex {
                             wgt.set_callback(move |counter| {
                                 app::set_font_size(counter.value() as i32);
                             });
-                            wgt.do_callback();
                             wgt
                         },
                         HEIGHT,
