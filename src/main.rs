@@ -52,6 +52,7 @@ fn main() -> Result<(), FltkError> {
         (Color::Blue, (38, 139, 210)),
         (Color::Cyan, (42, 161, 152)),
         (Color::Green, (133, 153, 0)),
+        (Color::Yellow, (181, 137, 0)),
     ] {
         app::set_color(color, r, g, b);
     }
