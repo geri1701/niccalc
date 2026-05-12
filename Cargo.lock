@@ -10,18 +10,19 @@ checksum = "b048fb63fd8b5923fc5aa7b340d8e156aec7ec02f0c78fa8a6ddc2613f6f71de"
 
 [[package]]
 name = "cc"
-version = "1.1.21"
+version = "1.2.62"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "07b1695e2c7e8fc85310cde85aeaab7e3097f593c91d209d3f9df76c928100f0"
+checksum = "a1dce859f0832a7d088c4f1119888ab94ef4b5d6795d1ce05afb7fe159d79f98"
 dependencies = [
+ "find-msvc-tools",
  "shlex",
 ]
 
 [[package]]
 name = "cmake"
-version = "0.1.51"
+version = "0.1.58"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fb1e43aa7fd152b1f968787f7dbcdeb306d1867ff373c69955211876c053f91a"
+checksum = "c0f78a02292a74a88ac736019ab962ece0bc380e3f977bf72e376c5d78ff0678"
 dependencies = [
  "cc",
 ]
@@ -48,27 +49,42 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "22ec99545bb0ed0ea7bb9b8e1e9122ea386ff8a48c0922e43f36d45ab09e0e80"
 
 [[package]]
-name = "fltk"
-version = "1.4.36"
+name = "find-msvc-tools"
+version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f3425eb42cd32d91ecacb9a51abce5eadb95805bc2a5bd0865af296d9c567e55"
+checksum = "5baebc0774151f905a1a2cc41989300b1e6fbb29aff0ceffa1064fdd3088d582"
+
+[[package]]
+name = "fltk"
+version = "1.5.23"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "78e4a0494d4c6c020514ae1d0b6cc44beddd5f37f0b81bc8e84334652ee15291"
 dependencies = [
  "bitflags",
  "crossbeam-channel",
  "fltk-sys",
+ "minipaste",
  "once_cell",
- "paste",
  "ttf-parser",
 ]
 
 [[package]]
 name = "fltk-sys"
-version = "1.4.36"
+version = "1.5.23"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a6064d919361d236997a98584263cb645d17beff0dd15b151f9bbfd19ddc4d37"
+checksum = "6d9c99e29458923abe3f07b7f8a3bc5b5de3a2c04ad82273fd96402b3666ed06"
 dependencies = [
  "cmake",
  "cmk",
+]
+
+[[package]]
+name = "minipaste"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1bbcafc6544efab7decec8e8e63d6e7cbaac0a699a4adead308a80f9c302d6ae"
+dependencies = [
+ "proc-macro2",
 ]
 
 [[package]]
@@ -85,10 +101,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3fdb12b2476b595f9358c5161aa467c2438859caa136dec86c26fdd2efe17b92"
 
 [[package]]
-name = "paste"
-version = "1.0.15"
+name = "proc-macro2"
+version = "1.0.106"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "57c0d7b74b563b49d38dae00a0c37d4d6de9b432382b2892f0574ddcae73fd0a"
+checksum = "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934"
+dependencies = [
+ "unicode-ident",
+]
 
 [[package]]
 name = "shlex"
@@ -101,3 +120,9 @@ name = "ttf-parser"
 version = "0.25.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5902c5d130972a0000f60860bfbf46f7ca3db5391eddfedd1b8728bd9dc96c0e"
+
+[[package]]
+name = "unicode-ident"
+version = "1.0.24"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75"

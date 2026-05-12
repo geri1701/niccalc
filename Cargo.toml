@@ -12,7 +12,7 @@ keywords = ["gui", "convert"]
 categories = ["gui"]
 
 [dependencies]
-fltk = { version = "1" }
+fltk = { version = "1.5" }
 
 [profile.release]
 strip = true

@@ -4,16 +4,15 @@ use {
     fltk::{
         app,
         browser::Browser,
-        enums::{Align, CallbackTrigger, Color, Cursor, Event, Font, FrameType},
+        enums::{CallbackTrigger, Color, Cursor, Event, Font, FrameType},
         frame::Frame,
         group::{Flex, Wizard},
         image::PngImage,
         input::{Input, InputType},
-        menu::{Choice, MenuButton, MenuButtonType},
-        misc::Chart,
+        menu::{MenuButton, MenuButtonType},
+        misc::{Chart, Tooltip},
         prelude::*,
         text::{TextBuffer, TextDisplay, WrapMode},
-        valuator::{Counter, CounterType},
         window::Window,
     },
     std::{cell::RefCell, rc::Rc},
@@ -21,7 +20,6 @@ use {
 
 const PAD: i32 = 10;
 const HEIGHT: i32 = PAD * 3;
-const WIDTH: i32 = HEIGHT * 3;
 
 enum Update {
     NicCal = 41,
@@ -34,9 +32,35 @@ impl Update {
 }
 
 fn main() -> Result<(), FltkError> {
+    pub const LINE: i32 = PAD / 2;
     let state = Rc::new(RefCell::new(models::Model::default()));
     const UPDATE: Event = Update::NicCal.event();
-    let app = app::App::default();
+    let app = app::App::default().load_system_fonts();
+    app::set_scheme(app::Scheme::Base);
+    app::set_frame_type2(FrameType::UpBox, FrameType::ThinUpBox);
+    app::set_frame_type2(FrameType::DownBox, FrameType::ThinDownBox);
+    app::set_background_color(238, 232, 213);
+    app::set_background2_color(253, 246, 227);
+    app::set_foreground_color(7, 54, 66);
+    app::set_selection_color(203, 75, 22);
+    app::set_inactive_color(181, 137, 0);
+    Tooltip::set_color(Color::Background2);
+    Tooltip::set_text_color(Color::Foreground);
+    for (color, (r, g, b)) in [
+        (Color::Red, (220, 50, 47)),
+        (Color::Magenta, (211, 54, 130)),
+        (Color::Blue, (38, 139, 210)),
+        (Color::Cyan, (42, 161, 152)),
+        (Color::Green, (133, 153, 0)),
+        (Color::Yellow, (181, 137, 0)),
+    ] {
+        app::set_color(color, r, g, b);
+    }
+    app::set_visible_focus(false);
+    app::set_font(match cfg!(target_os = "windows") {
+        true => Font::by_name("BCascadia Mono"),
+        false => Font::CourierBold,
+    });
     let mut wnd = Window::default().with_size(640, 360).center_screen();
     wnd.size_range(640, 360, 0, 0);
     wnd.set_label("Niccalc");
@@ -200,7 +224,6 @@ fn main() -> Result<(), FltkError> {
             vbox.end();
             vbox
         });
-        wzd.add(&page_settings());
         wzd.add(&{
             let mut hbox = Flex::default_fill().with_label("Info");
             hbox.set_margin(PAD);
@@ -209,6 +232,7 @@ fn main() -> Result<(), FltkError> {
                 wgt.wrap_mode(WrapMode::AtBounds, 0);
                 wgt.set_scrollbar_size(16);
                 wgt.set_buffer(TextBuffer::default());
+                wgt.set_scrollbar_size(LINE);
                 wgt.insert(&(include_str!("../README.md").to_owned() + "\n" + include_str!("../LICENSE.txt")));
                 wgt
             });
@@ -264,120 +288,4 @@ fn add_menu(wizard: &mut Wizard, event: Event) -> bool {
         }
         _ => false,
     }
-}
-
-fn page_settings() -> Flex {
-    let mut hbox = Flex::default_fill().with_label("Settings");
-    hbox.set_frame(FrameType::FlatBox);
-    hbox.set_margin(PAD);
-    hbox.set_pad(PAD);
-    hbox.add(&Frame::default());
-    hbox.fixed(
-        &{
-            let mut vbox = Flex::default_fill().column();
-            vbox.set_pad(PAD);
-            vbox.set_margin(PAD);
-            vbox.add(&Frame::default());
-            vbox.add(&{
-                let mut hbox = Flex::default_fill();
-                hbox.fixed(&Frame::default(), WIDTH);
-                hbox.add(&{
-                    let mut vbox = Flex::default_fill().column();
-                    vbox.set_color(Color::Foreground);
-                    vbox.set_pad(PAD);
-                    vbox.fixed(
-                        &{
-                            let mut wgt = Choice::default().with_label("Theme");
-                            wgt.add_choice("Light|Dark");
-                            wgt.set_value(0);
-                            wgt.set_callback(move |choice| {
-                                let color = [
-                                    [
-                                        0xF6F5F4, //set_background_color
-                                        0xFCFCFC, //set_background2_color
-                                        0x323232, //set_foreground_color
-                                        0x3584E4, //set_selection_color
-                                    ],
-                                    [
-                                        0x353535, //set_background_color
-                                        0x303030, //set_background2_color
-                                        0xD6D6D6, //set_foreground_color
-                                        0x15539E, //set_selection_color
-                                    ],
-                                ][choice.value() as usize];
-                                app::set_scheme(match choice.value() {
-                                    0 => app::Scheme::Oxy,
-                                    _ => app::Scheme::Gtk,
-                                });
-                                let (r, g, b) = Color::from_hex(color[0]).to_rgb();
-                                app::set_background_color(r, g, b);
-                                let (r, g, b) = Color::from_hex(color[1]).to_rgb();
-                                app::set_background2_color(r, g, b);
-                                let (r, g, b) = Color::from_hex(color[2]).to_rgb();
-                                app::set_foreground_color(r, g, b);
-                                let (r, g, b) = Color::from_hex(color[3]).to_rgb();
-                                app::set_selection_color(r, g, b);
-                                app::set_color(Color::Blue, r, g, b);
-                                for (color, hex) in [
-                                    (Color::Yellow, 0xb58900),
-                                    (Color::Red, 0xdc322f),
-                                    (Color::Magenta, 0xd33682),
-                                    (Color::Cyan, 0x2aa198),
-                                    (Color::Green, 0x859900),
-                                ] {
-                                    let (r, g, b) = Color::from_hex(hex).to_rgb();
-                                    app::set_color(color, r, g, b);
-                                }
-                                app::set_visible_focus(false);
-                                app::redraw();
-                            });
-                            wgt.do_callback();
-                            wgt
-                        },
-                        HEIGHT,
-                    );
-                    vbox.fixed(
-                        &{
-                            let mut wgt = Choice::default().with_label("Font name");
-                            wgt.add_choice(&app::fonts().join("|"));
-                            wgt.set_value(5);
-                            wgt.set_callback(move |choice| {
-                                app::set_font(Font::by_index(choice.value() as usize));
-                            });
-                            wgt.do_callback();
-                            wgt
-                        },
-                        HEIGHT,
-                    );
-                    vbox.fixed(
-                        &{
-                            let mut wgt = Counter::default().with_label("Font size");
-                            wgt.set_type(CounterType::Simple);
-                            wgt.set_align(Align::Left);
-                            wgt.set_range(1_f64, 14f64);
-                            wgt.set_precision(0);
-                            wgt.set_value(14f64);
-                            wgt.set_callback(move |counter| {
-                                app::set_font_size(counter.value() as i32);
-                            });
-                            wgt.do_callback();
-                            wgt
-                        },
-                        HEIGHT,
-                    );
-                    vbox.end();
-                    vbox
-                });
-                hbox.end();
-                hbox
-            });
-            vbox.add(&Frame::default());
-            vbox.end();
-            vbox
-        },
-        WIDTH * 3,
-    );
-    hbox.add(&Frame::default());
-    hbox.end();
-    hbox
 }
